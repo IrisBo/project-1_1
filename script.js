@@ -14,12 +14,6 @@ const taskDisplayArea = document.getElementById("display_area")
 let allTasksToArray = []
 
 
-// when page reloads it runs the function into the variable array
-window.addEventListener("load", function () {
-    allTasksToArray = getTasksFromLocalStorage()
-    
-    createAllItemsFromLocalStorage();
-})
 
 
 
@@ -90,7 +84,7 @@ function createHtmlTaskItem(taskObject) {
     newTaskItem.appendChild(deleteTaskBtn)
     taskDisplayArea.appendChild(newTaskItem)
  
-    // adding eventlistener anf function to remove task
+    // adding eventlistener and function to remove task, i think here is the problem
  deleteTaskBtn.addEventListener("click", function () {
     const uniqueId = newTaskItem.dataset.uniqueId;
     deleteTask(uniqueId);
@@ -104,12 +98,15 @@ function createHtmlTaskItem(taskObject) {
 }
 
 
-
+// deleting task from local storage using the unique ID
 
 function deleteTask(uniqueId) {
     allTasksToArray = allTasksToArray.filter(task => task.uniqueId !== uniqueId);
     keepTasksInLocalStorage(allTasksToArray);
 }
+
+
+
 
 
 // saving in localstorage function
@@ -140,7 +137,6 @@ function getTasksFromLocalStorage() {
 
 function createAllItemsFromLocalStorage() {
     temp = getTasksFromLocalStorage()
-    // const allTasksInventory= taskDisplayArea
 
     temp.forEach(element => {
         createHtmlTaskItem(element)
@@ -151,6 +147,12 @@ function createAllItemsFromLocalStorage() {
 
 }
 
+
+// when page reloads it runs the function into the variable array
+window.addEventListener("load", function () {
+    
+    createAllItemsFromLocalStorage();
+})
 
 
 
