@@ -35,8 +35,7 @@ addNewTaskBtn.addEventListener("click", function () {
         uniqueId: timeStampId,
 
     }
-    // creating the task item element in html
-    createHtmlTaskItem(newTaskAll)
+    
 
     // adding all objects to an array
     allTasksToArray.push(newTaskAll)
@@ -44,8 +43,10 @@ addNewTaskBtn.addEventListener("click", function () {
     // saving array to localstorage
     keepTasksInLocalStorage(allTasksToArray)
 
+    // creating the task item element in html
+    createHtmlTaskItem(newTaskAll)
 
-
+ 
 
 
 
@@ -84,16 +85,13 @@ function createHtmlTaskItem(taskObject) {
     newTaskItem.appendChild(deleteTaskBtn)
     taskDisplayArea.appendChild(newTaskItem)
  
-    // adding eventlistener and function to remove task, i think here is the problem
+   // adding eventlistener and function to remove task, i think here is the problem
  deleteTaskBtn.addEventListener("click", function () {
     const uniqueId = newTaskItem.dataset.uniqueId;
     deleteTask(uniqueId);
     newTaskItem.remove(); 
     
 });
-
-
-
 
 }
 
@@ -102,6 +100,7 @@ function createHtmlTaskItem(taskObject) {
 
 function deleteTask(uniqueId) {
     allTasksToArray = allTasksToArray.filter(task => task.uniqueId !== uniqueId);
+
     keepTasksInLocalStorage(allTasksToArray);
 }
 
@@ -135,8 +134,8 @@ function getTasksFromLocalStorage() {
 }
 
 
-function createAllItemsFromLocalStorage() {
-    temp = getTasksFromLocalStorage()
+function createAllItemsFromLocalStorage(temp) {
+    // temp = getTasksFromLocalStorage()
 
     temp.forEach(element => {
         createHtmlTaskItem(element)
@@ -150,8 +149,8 @@ function createAllItemsFromLocalStorage() {
 
 // when page reloads it runs the function into the variable array
 window.addEventListener("load", function () {
-    
-    createAllItemsFromLocalStorage();
+    temp = getTasksFromLocalStorage()
+    createAllItemsFromLocalStorage(temp);
 })
 
 
@@ -181,3 +180,6 @@ clearFormBtn.addEventListener("click",function () {
 
 // also i need to create a boolean check box to select is task is done and then make a line on it  
 // with option to edit it
+
+
+
