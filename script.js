@@ -30,6 +30,12 @@ addNewTaskBtn.addEventListener("click", function () {
     let taskTimeValue = newTaskTime.value
     let timeStampId = Date.now()
 
+    // adding a validation for the input
+
+
+    if (taskTextValue.trim() === '' || taskDateValue.trim()===``|| taskTimeValue.trim()===`` ) {
+        // If it's empty, show an alert or use a system notification
+        alert('Please enter all input fields');} else {
 
     // creating an object with all data
     let newTaskAll = {
@@ -58,7 +64,7 @@ addNewTaskBtn.addEventListener("click", function () {
     clearAlldataInputfields(newTaskDate)
     clearAlldataInputfields(newTaskTime)
 
-
+        }
 })
 
 
@@ -108,14 +114,12 @@ function createHtmlTaskItem(taskObject) {
 // deleting task from local storage using the unique ID
 
 function deleteTaskFromLocalStorage(uniqueId) {
-    debugger
+    
     const UniqueIdToNumber = parseInt(uniqueId, 10)
-    debugger
-    let allTasksToArray2 = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber)
-    debugger
-    console.log(allTasksToArray)
-    console.log(allTasksToArray2)
-    keepTasksInLocalStorage(allTasksToArray2)
+   
+     allTasksToArray = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber)
+    
+    keepTasksInLocalStorage(allTasksToArray)
 
 }
 
