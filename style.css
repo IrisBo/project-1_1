@@ -109,8 +109,8 @@
 .all_new_task {
     background-image: url("sticky\ note.jpeg");
     background-size: cover;
-    width: 150px;
-    height: 200px;
+    width: 200px;
+    height: 260px;
     position: relative;
     padding: 15px;
     margin: 20px;
@@ -127,10 +127,8 @@
     opacity: 1;
 }
 
-
-
 .text {
-    margin-top: 15px;
+    margin-top: 20px;
     margin-bottom: 25px;
     overflow-y: auto;
     flex-grow: 1;
@@ -158,12 +156,41 @@
     cursor: pointer;
     border-radius: 3px;
     display: none;
-    background-color: black;
-    color: antiquewhite;
+    text-align: center;
 }
 
-.all_new_task:hover .delete_task {
+.all_new_task:hover .delete_task{
     display: block;
     background-color: black;
     color: antiquewhite;
+    width: 25px; 
+    height: 20px; 
+    text-align: center;
+    line-height: 10px;
 }
+
+
+
+.show_if_finished{
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transform: scale(2);
+ 
+}
+
+.finished_task{
+    text-decoration: line-through;
+}
+
+.label_for_checkbox{
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    display: inline-block;
+
+}
+
+

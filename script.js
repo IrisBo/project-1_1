@@ -34,8 +34,8 @@ addNewTaskBtn.addEventListener("click", function () {
 
 
     if (taskTextValue.trim() === '' || taskDateValue.trim()===``|| taskTimeValue.trim()===`` ) {
-        // If it's empty, show an alert or use a system notification
-        alert('Please enter all input fields');} else {
+    
+        alert('Please enter all input fields')} else {
 
     // creating an object with all data
     let newTaskAll = {
@@ -97,10 +97,51 @@ function createHtmlTaskItem(taskObject) {
     const deleteTaskBtnText = document.createTextNode("X")
     deleteTaskBtn.appendChild(deleteTaskBtnText)
     newTaskItem.appendChild(deleteTaskBtn)
+   
+
+    // const finishedTaskBtn=document.createElement("button")
+    // finishedTaskBtn.classList.add("show_if_finished")
+    // const finishedTaskBtnText=document.createTextNode("V")
+    // finishedTaskBtn.appendChild(finishedTaskBtnText)
+    // newTaskItem.appendChild(finishedTaskBtn)
+
+
+    const checkboxIfTaskFinished = document.createElement("input")
+    checkboxIfTaskFinished.type = "checkbox"
+    checkboxIfTaskFinished.classList.add("show_if_finished")
+    const labelForCheckbox=document.createElement("label")
+    labelForCheckbox.textContent="Done"
+    labelForCheckbox.setAttribute("for","checkboxIfTaskFinished")
+    labelForCheckbox.classList.add("label_for_checkbox")
+
+    newTaskItem.appendChild(checkboxIfTaskFinished)
+    newTaskItem.appendChild(labelForCheckbox)
+
     taskDisplayArea.appendChild(newTaskItem)
 
 
+    // adding eventlistener to show when task is done button
+    
+    // finishedTaskBtn.addEventListener("click", function () {
+    //     newTaskItem.classList.add("finished_task");
+    // });
 
+
+     // adding eventlistener to show when task is done checkbox
+
+     checkboxIfTaskFinished.addEventListener("change", function () {
+        if (checkboxIfTaskFinished.checked) {
+            newTaskItem.classList.add("finished_task")
+        } else {
+            newTaskItem.classList.remove("finished_task");
+        }
+    });
+
+
+
+
+
+// adding eventlistener for the delete button
     deleteTaskBtn.addEventListener("click", function () {
         const uniqueIdTask = newTaskItem.dataset.uniqueId
         newTaskItem.remove()
