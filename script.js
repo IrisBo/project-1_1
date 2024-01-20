@@ -14,7 +14,6 @@ const taskDisplayArea = document.getElementById("display_area")
 let allTasksToArray = []
 
 
-// iife? maybe
 // when page reloads it runs the function into the variable array
 window.addEventListener("load", function () {
     allTasksToArray = getTasksFromLocalStorage()
@@ -29,7 +28,7 @@ addNewTaskBtn.addEventListener("click", function () {
     let taskTextValue = newTaskText.value
     let taskDateValue = newTaskDate.value
     let taskTimeValue = newTaskTime.value
-    let timeStampId= Date.now()
+    let timeStampId = Date.now()
 
 
     // creating an object with all data
@@ -40,7 +39,7 @@ addNewTaskBtn.addEventListener("click", function () {
         uniqueId: timeStampId,
 
     }
-    
+
 
     // adding all objects to an array
     allTasksToArray.push(newTaskAll)
@@ -51,7 +50,7 @@ addNewTaskBtn.addEventListener("click", function () {
     // creating the task item element in html
     createHtmlTaskItem(newTaskAll)
 
- 
+
 
 
 
@@ -74,47 +73,43 @@ function createHtmlTaskItem(taskObject) {
 
     for (const key in taskObject) {
 
-        if(key!==`uniqueId`){
-        const newTaskItemDiv = document.createElement("div")
-        // added new class code
-       newTaskItemDiv.classList.add(key)
-        const newNodeText = document.createTextNode(taskObject[key])
-        newTaskItemDiv.appendChild(newNodeText)
-        newTaskItem.appendChild(newTaskItemDiv)}}
-    
+        if (key !== `uniqueId`) {
+            const newTaskItemDiv = document.createElement("div")
+            // added new class code
+            newTaskItemDiv.classList.add(key)
+            const newNodeText = document.createTextNode(taskObject[key])
+            newTaskItemDiv.appendChild(newNodeText)
+            newTaskItem.appendChild(newTaskItemDiv)
+        }
+    }
+
     const deleteTaskBtn = document.createElement("button")
     deleteTaskBtn.classList.add("delete_task")
-   
+
     const deleteTaskBtnText = document.createTextNode("X")
     deleteTaskBtn.appendChild(deleteTaskBtnText)
     newTaskItem.appendChild(deleteTaskBtn)
     taskDisplayArea.appendChild(newTaskItem)
- 
-   // adding eventlistener and function to remove task, i think here is the problem
 
- deleteTaskBtn.addEventListener("click", function () {
-    const uniqueIdTask = newTaskItem.dataset.uniqueId
-    newTaskItem.remove()
-    deleteTaskFromLocalStorage(uniqueIdTask)
-    
-});
+   
+
+    deleteTaskBtn.addEventListener("click", function () {
+        const uniqueIdTask = newTaskItem.dataset.uniqueId
+        newTaskItem.remove()
+        deleteTaskFromLocalStorage(uniqueIdTask)
+
+    });
 
 }
 
 
 // deleting task from local storage using the unique ID
-// added a new array
-// Array.from && indexOf
+
 function deleteTaskFromLocalStorage(uniqueId) {
     const UniqueIdToNumber = parseInt(uniqueId, 10)
-    debugger
-   let allTasksToArray2 = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber);
-   console.log('allTasksToArray:', allTasksToArray);
-   console.log('allTasksToArray2:', allTasksToArray2);
-    console.log('uniqueId:', uniqueId);
-debugger
+    let allTasksToArray2 = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber);
     keepTasksInLocalStorage(allTasksToArray2)
-    debugger
+
 }
 
 
@@ -173,10 +168,10 @@ function clearAlldataInputfields(textVl) {
 
 // function to clear the form if wanted
 
-clearFormBtn.addEventListener("click",function () {
-    newTaskText.value="" 
-    newTaskDate.value=""
-    newTaskTime.value=""
+clearFormBtn.addEventListener("click", function () {
+    newTaskText.value = ""
+    newTaskDate.value = ""
+    newTaskTime.value = ""
 })
 
 
@@ -185,7 +180,7 @@ clearFormBtn.addEventListener("click",function () {
 
 
 
-// also i need to create a boolean check box to select is task is done and then make a line on it  
+// also i need to create a boolean check box to select is task is done and then make a line on it
 // with option to edit it
 
 
