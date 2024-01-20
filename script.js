@@ -14,7 +14,12 @@ const taskDisplayArea = document.getElementById("display_area")
 let allTasksToArray = []
 
 
-
+// iife? maybe
+// when page reloads it runs the function into the variable array
+window.addEventListener("load", function () {
+    allTasksToArray = getTasksFromLocalStorage()
+    createAllItemsFromLocalStorage();
+})
 
 
 
@@ -86,10 +91,11 @@ function createHtmlTaskItem(taskObject) {
     taskDisplayArea.appendChild(newTaskItem)
  
    // adding eventlistener and function to remove task, i think here is the problem
+
  deleteTaskBtn.addEventListener("click", function () {
-    const uniqueId = newTaskItem.dataset.uniqueId;
-    deleteTask(uniqueId);
-    newTaskItem.remove(); 
+    const uniqueIdTask = newTaskItem.dataset.uniqueId
+    newTaskItem.remove()
+    deleteTaskFromLocalStorage(uniqueIdTask)
     
 });
 
@@ -97,21 +103,27 @@ function createHtmlTaskItem(taskObject) {
 
 
 // deleting task from local storage using the unique ID
-
-function deleteTask(uniqueId) {
-    allTasksToArray = allTasksToArray.filter(task => task.uniqueId !== uniqueId);
-
-    keepTasksInLocalStorage(allTasksToArray);
+// added a new array
+// Array.from && indexOf
+function deleteTaskFromLocalStorage(uniqueId) {
+    const UniqueIdToNumber = parseInt(uniqueId, 10)
+    debugger
+   let allTasksToArray2 = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber);
+   console.log('allTasksToArray:', allTasksToArray);
+   console.log('allTasksToArray2:', allTasksToArray2);
+    console.log('uniqueId:', uniqueId);
+debugger
+    keepTasksInLocalStorage(allTasksToArray2)
+    debugger
 }
-
 
 
 
 
 // saving in localstorage function
 function keepTasksInLocalStorage(array) {
-    const myTasktsToString = JSON.stringify(array)
-    localStorage.setItem("allTasks", myTasktsToString)
+    const myTasksToString = JSON.stringify(array)
+    localStorage.setItem("allTasks", myTasksToString)
 
 
 }
@@ -134,8 +146,8 @@ function getTasksFromLocalStorage() {
 }
 
 
-function createAllItemsFromLocalStorage(temp) {
-    // temp = getTasksFromLocalStorage()
+function createAllItemsFromLocalStorage() {
+    let temp = getTasksFromLocalStorage()
 
     temp.forEach(element => {
         createHtmlTaskItem(element)
@@ -147,11 +159,6 @@ function createAllItemsFromLocalStorage(temp) {
 }
 
 
-// when page reloads it runs the function into the variable array
-window.addEventListener("load", function () {
-    temp = getTasksFromLocalStorage()
-    createAllItemsFromLocalStorage(temp);
-})
 
 
 
