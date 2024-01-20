@@ -75,8 +75,8 @@ function createHtmlTaskItem(taskObject) {
     const newTaskItem = document.createElement("div")
     newTaskItem.classList.add("all_new_task")
     setTimeout(() => {
-        newTaskItem.classList.add("appear");
-    }, 10);
+        newTaskItem.classList.add("appear")
+    }, 10)
 
     newTaskItem.dataset.uniqueId = taskObject.uniqueId
 
@@ -118,9 +118,9 @@ function createHtmlTaskItem(taskObject) {
         if (checkboxIfTaskFinished.checked) {
             newTaskItem.classList.add("finished_task")
         } else {
-            newTaskItem.classList.remove("finished_task");
+            newTaskItem.classList.remove("finished_task")
         }
-    });
+    })
 
 
 
