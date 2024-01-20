@@ -84,7 +84,6 @@ function createHtmlTaskItem(taskObject) {
 
         if (key !== `uniqueId`) {
             const newTaskItemDiv = document.createElement("div")
-            // added new class code
             newTaskItemDiv.classList.add(key)
             const newNodeText = document.createTextNode(taskObject[key])
             newTaskItemDiv.appendChild(newNodeText)
@@ -99,13 +98,6 @@ function createHtmlTaskItem(taskObject) {
     newTaskItem.appendChild(deleteTaskBtn)
    
 
-    // const finishedTaskBtn=document.createElement("button")
-    // finishedTaskBtn.classList.add("show_if_finished")
-    // const finishedTaskBtnText=document.createTextNode("V")
-    // finishedTaskBtn.appendChild(finishedTaskBtnText)
-    // newTaskItem.appendChild(finishedTaskBtn)
-
-
     const checkboxIfTaskFinished = document.createElement("input")
     checkboxIfTaskFinished.type = "checkbox"
     checkboxIfTaskFinished.classList.add("show_if_finished")
@@ -118,13 +110,6 @@ function createHtmlTaskItem(taskObject) {
     newTaskItem.appendChild(labelForCheckbox)
 
     taskDisplayArea.appendChild(newTaskItem)
-
-
-    // adding eventlistener to show when task is done button
-    
-    // finishedTaskBtn.addEventListener("click", function () {
-    //     newTaskItem.classList.add("finished_task");
-    // });
 
 
      // adding eventlistener to show when task is done checkbox
@@ -225,15 +210,6 @@ clearFormBtn.addEventListener("click", function () {
     newTaskDate.value = ""
     newTaskTime.value = ""
 })
-
-
-
-
-
-
-
-// also i need to create a boolean check box to select is task is done and then make a line on it
-// with option to edit it
 
 
 
