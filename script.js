@@ -68,6 +68,9 @@ addNewTaskBtn.addEventListener("click", function () {
 function createHtmlTaskItem(taskObject) {
     const newTaskItem = document.createElement("div")
     newTaskItem.classList.add("all_new_task")
+    setTimeout(() => {
+        newTaskItem.classList.add("appear");
+    }, 10);
 
     newTaskItem.dataset.uniqueId = taskObject.uniqueId
 
@@ -85,13 +88,12 @@ function createHtmlTaskItem(taskObject) {
 
     const deleteTaskBtn = document.createElement("button")
     deleteTaskBtn.classList.add("delete_task")
-
     const deleteTaskBtnText = document.createTextNode("X")
     deleteTaskBtn.appendChild(deleteTaskBtnText)
     newTaskItem.appendChild(deleteTaskBtn)
     taskDisplayArea.appendChild(newTaskItem)
 
-   
+
 
     deleteTaskBtn.addEventListener("click", function () {
         const uniqueIdTask = newTaskItem.dataset.uniqueId
@@ -106,8 +108,13 @@ function createHtmlTaskItem(taskObject) {
 // deleting task from local storage using the unique ID
 
 function deleteTaskFromLocalStorage(uniqueId) {
+    debugger
     const UniqueIdToNumber = parseInt(uniqueId, 10)
-    let allTasksToArray2 = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber);
+    debugger
+    let allTasksToArray2 = allTasksToArray.filter(task => task.uniqueId !== UniqueIdToNumber)
+    debugger
+    console.log(allTasksToArray)
+    console.log(allTasksToArray2)
     keepTasksInLocalStorage(allTasksToArray2)
 
 }

@@ -2,142 +2,9 @@
 <html lang="en">
 
 <head>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />   -->
-      <style>
-        .my_index_body{
-            background-image: url("backgraound\ board.jpeg");
-        }
-
-       .page_heading_h1{
-        text-align: center;
-        font-family:fantasy;
-       
-        
-       }
-    
-        .my_input_area {
-            padding: 20px;
-            background-image: url("picture\ notebook\ lines.jpeg");
-            background-size: contain;
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.746);
-            display:block;
-            align-items: center;
-            justify-content: center;
-            width: 100vh;
-            height: 25vh; 
-            margin-left: 300px;
-    
-        }
-
-
-
-
-
-        .task_date, .task_text, .task_time{
-            font-size:medium;
-            font-family: Arial, Helvetica, sans-serif;
-            padding:10px;
-            background-color:#f2f57aec;
-            border-radius: 2px;
-            margin-left: 60px;
-    
-        }
-
-        .date_input, .time_input{
-          height: 20px;
-          width:max-content;
-          margin: 15px;
-          margin-left: 20px;
-          border-radius: 2px;
-        
-        }
-        .text_input{
-            height: 60px;
-            width: 300px;
-            border-radius: 2px;
-            margin-left: 20px;
-        }
-
-        /* here i will design the task sticky */
-
-        #display_area {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .all_new_task {
-            background-image: url("sticky\ note.jpeg");
-            background-size: cover;
-            width: 100px;
-            height: 150px;
-            position: relative;
-            padding: 15px;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: row;
-            transition:ease-in;
-            overflow: hidden;
-        }
-
-        .save_new_task_btn,.clear_form_btn {
-            display: inline-block;
-            padding: 5px 10px;
-            font-size: 12px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            border: 1px solid #4724fa;
-            color: #4724fa;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow:0 2px 5px rgba(0, 0, 0, 0.1); 
-            transition: background-color 0.3s, color 0.3s;
-            margin-left: 165px;
-
-        }
-        .clear_form_btn {
-            margin-left: 20px;
-        }
-
-        .text {
-            margin-top: 15px;
-            margin-bottom: 25px;
-            overflow-y: auto;
-            flex-grow: 1;
-            border-radius: 2px;
-        }
-        .date {
-            position: absolute;
-            left: 5px;
-            bottom: 20px;
-            border-radius: 2px;
-        }
-        .time {
-            position: absolute;
-            left: 5px;
-            bottom: 5px;
-            border-radius: 2px;
-        }
-
-        .delete_task {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            cursor: pointer;
-            border-radius: 2px;
-            display: none;
-        }
-
-        .all_new_task:hover .delete_task {
-        display: block; 
-        background-color: red;
-}
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,7 +16,6 @@
     <div class="my_input_area">
         <label class="task_text">My Text</label><input type="text" class="text_input"
             placeholder="Enter your task here">
-        <!-- please delete this later -->
         <br>
         <label class="task_date">Date</label><input type="date" class="date_input" placeholder="Set date here">
         <label class="task_time">Time</label><input type="time" class="time_input" placeholder="Set time here">

@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'my project font';
+    src: url("PermanentMarker-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.my_index_body {
+
+    background-image: url("backgraound\ board.jpeg");
+    justify-content: center;
+    align-items: center;
+}
+
+.page_heading_h1 {
+    font-family: "my project font";
+    text-align: center;
+}
+
+.my_input_area {
+    padding: 20px;
+    background-image: url("picture\ notebook\ lines.jpeg");
+    background-size: contain;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.746);
+    display: block;
+    align-items: center;
+    justify-content: center;
+    width: 100vh;
+    height: 40vh;
+    margin-left: 380px;
+
+}
+
+
+.task_date,
+.task_text,
+.task_time {
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    background-color: #f2f57aec;
+    border-radius: 2px;
+    margin-left: 30px;
+
+}
+
+.date_input,
+.time_input {
+    height: 20px;
+    width: max-content;
+    margin: 15px;
+    margin-left: 20px;
+    border-radius: 2px;
+
+}
+
+.text_input {
+    height: 60px;
+    width: 300px;
+    border-radius: 2px;
+    margin-left: 20px;
+}
+
+
+.save_new_task_btn,
+.clear_form_btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #4724fa;
+    color: #4724fa;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 165px;
+    margin-top: 20px;
+
+}
+
+.clear_form_btn {
+    margin-left: 20px;
+}
+
+/* here i will design the task sticky */
+
+#display_area {
+    display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.all_new_task {
+    background-image: url("sticky\ note.jpeg");
+    background-size: cover;
+    width: 150px;
+    height: 200px;
+    position: relative;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    overflow: hidden;
+}
+
+.all_new_task.appear {
+    opacity: 1;
+}
+
+
+
+.text {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    overflow-y: auto;
+    flex-grow: 1;
+    border-radius: 2px;
+}
+
+.date {
+    position: absolute;
+    left: 5px;
+    bottom: 20px;
+    border-radius: 2px;
+}
+
+.time {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 2px;
+}
+
+.delete_task {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: none;
+    background-color: black;
+    color: antiquewhite;
+}
+
+.all_new_task:hover .delete_task {
+    display: block;
+    background-color: black;
+    color: antiquewhite;
+}
